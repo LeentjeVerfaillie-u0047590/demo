@@ -9,7 +9,7 @@ extends CharacterBody2D
 
 # Oxygen parameters
 @export var max_oxygen: float = 100.0
-@export var oxygen_drain_rate: float = 1.0  # Oxygen lost per second while diving
+@export var oxygen_drain_rate: float = 10.0  # Oxygen lost per second while diving
 var current_oxygen: float
 var current_dive_speed: float
 
