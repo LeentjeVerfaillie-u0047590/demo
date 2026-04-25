@@ -1,8 +1,7 @@
 extends Camera2D
 
-@onready var player = get_tree().get_first_node_in_group("player")
-@export var follow_speed: float = 5.0
-
+@onready var player = $".."
+@export var follow_speed: float = 1000.0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

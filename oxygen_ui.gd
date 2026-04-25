@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@onready var oxygen_bar: ProgressBar = $OxygenBar
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var oxygen_bar: ProgressBar = $Control/OxygenBar
+@onready var player = $"../Player"
 
 func _process(_delta: float) -> void:
 	
