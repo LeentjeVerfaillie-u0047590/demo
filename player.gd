@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
 # Diving parameters
-@export var max_speed: float = 500.0
-@export var acceleration: float = 1000.0
+@export var max_speed: float = 1000.0
+@export var acceleration: float = 2000.0
 @export var friction: float = 0.85  # Drag coefficient (lower = more drag)
 @export var buoyancy: float = 0.3   # Slight upward drift
 
 # Oxygen parameters
 @export var max_oxygen: float = 100.0
-@export var oxygen_drain_rate: float = 20.0  # Oxygen lost per second while diving
+@export var oxygen_drain_rate: float = 1.0  # Oxygen lost per second while diving
 var current_oxygen: float
 
 func _ready() -> void:

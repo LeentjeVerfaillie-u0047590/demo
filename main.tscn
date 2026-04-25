@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://6n3mcis2r7bg"]
+[gd_scene load_steps=12 format=4 uid="uid://6n3mcis2r7bg"]
 
 [ext_resource type="Texture2D" uid="uid://lf6hmybfhfei" path="res://godot-skeleton-main/art/Tiles/DarkTiles.PNG" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cvxl5px3s68rl" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://dfb5o6nxvj620" path="res://godot-skeleton-main/art/Tiles/LightTiles.PNG" id="2_lquwl"]
 [ext_resource type="Texture2D" uid="uid://c6ud4p2y2y3pg" path="res://godot-skeleton-main/art/Tiles/MossTiles.PNG" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://b5uw70ov5nyca" path="res://oxygen_ui.gd" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://bri3anwhgvcpy" path="res://camera_2d.gd" id="5_7mycd"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_272bh"]
 
@@ -252,6 +253,9 @@ tile_set = SubResource("TileSet_efxa6")
 
 [node name="Player" parent="." instance=ExtResource("2_0xm2m")]
 position = Vector2(601, 11)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+script = ExtResource("5_7mycd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("3_h2yge")
