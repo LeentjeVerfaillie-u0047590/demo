@@ -5,32 +5,34 @@ extends CharacterBody2D
 @export var acceleration: float = 2000.0
 @export var friction: float = 0.85  # Drag coefficient (lower = more drag)
 @export var buoyancy: float = 0.3   # Slight upward drift
+@export var max_dive_speed: float = 1000.0  # Speed at which player automatically descends
 
 # Oxygen parameters
 @export var max_oxygen: float = 100.0
 @export var oxygen_drain_rate: float = 1.0  # Oxygen lost per second while diving
 var current_oxygen: float
+var current_dive_speed: float
 
 func _ready() -> void:
 	current_oxygen = max_oxygen
+	current_dive_speed = max_dive_speed/4.0
 
 func _physics_process(delta: float) -> void:
 	# Get input direction
 	var input_direction = Vector2.ZERO
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
-	input_direction.y = Input.get_axis("ui_up", "ui_down")
 	input_direction = input_direction.normalized()
+	
+	velocity.y = current_dive_speed
 	
 	# Apply buoyancy (slight upward drift)
 	velocity.y -= buoyancy * delta
 	
-	# Smooth acceleration/deceleration
+	# Smooth acceleration/deceleration (only horizontal)
 	if input_direction.length() > 0:
 		velocity.x = move_toward(velocity.x, input_direction.x * max_speed, acceleration * delta)
-		velocity.y = move_toward(velocity.y, input_direction.y * max_speed, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, acceleration * delta * 2)
-		velocity.y = move_toward(velocity.y, 0, acceleration * delta * 2)
 	
 	# Apply drag/friction
 	velocity *= friction
