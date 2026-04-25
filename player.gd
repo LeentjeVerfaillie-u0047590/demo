@@ -1,25 +1,53 @@
 extends CharacterBody2D
 
+# Diving parameters
+@export var max_speed: float = 500.0
+@export var acceleration: float = 1000.0
+@export var friction: float = 0.85  # Drag coefficient (lower = more drag)
+@export var buoyancy: float = 0.3   # Slight upward drift
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+# Oxygen parameters
+@export var max_oxygen: float = 100.0
+@export var oxygen_drain_rate: float = 20.0  # Oxygen lost per second while diving
+var current_oxygen: float
 
+func _ready() -> void:
+	current_oxygen = max_oxygen
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
+	# Get input direction
+	var input_direction = Vector2.ZERO
+	input_direction.x = Input.get_axis("ui_left", "ui_right")
+	input_direction.y = Input.get_axis("ui_up", "ui_down")
+	input_direction = input_direction.normalized()
+	
+	# Apply buoyancy (slight upward drift)
+	velocity.y -= buoyancy * delta
+	
+	# Smooth acceleration/deceleration
+	if input_direction.length() > 0:
+		velocity.x = move_toward(velocity.x, input_direction.x * max_speed, acceleration * delta)
+		velocity.y = move_toward(velocity.y, input_direction.y * max_speed, acceleration * delta)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
+		velocity.x = move_toward(velocity.x, 0, acceleration * delta * 2)
+		velocity.y = move_toward(velocity.y, 0, acceleration * delta * 2)
+	
+	# Apply drag/friction
+	velocity *= friction
+	
+	# Drain oxygen while diving
+	current_oxygen = max(0, current_oxygen - oxygen_drain_rate * delta)
+	
+	# Game over or respawn logic when oxygen runs out
+	if current_oxygen <= 0:
+		_on_oxygen_depleted()
+	
 	move_and_slide()
+
+func _on_oxygen_depleted() -> void:
+	print("Player ran out of oxygen!")
+	# Add your game over logic here (e.g., respawn, scene reload)
+	get_tree().reload_current_scene()
+
+func restore_oxygen(amount: float) -> void:
+	current_oxygen = min(max_oxygen, current_oxygen + amount)
