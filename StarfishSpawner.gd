@@ -4,7 +4,7 @@ extends Node
 @export var starfish_scene: PackedScene = preload("res://starfish.tscn")  # Assign your starfish scene here
 @export var spawn_distance_below: float = 325.0  # How far below player to spawn
 @export var spawn_distance_horizontal: float = 234.0  # Random horizontal offset
-@export var spawn_interval: float = 25.0  # Seconds between spawns
+@export var spawn_interval: float = 5.0  # Seconds between spawns
 
 var spawn_timer: float = 0.0
 

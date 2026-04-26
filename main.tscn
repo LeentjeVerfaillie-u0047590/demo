@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://6n3mcis2r7bg"]
+[gd_scene load_steps=18 format=4 uid="uid://6n3mcis2r7bg"]
 
 [ext_resource type="Texture2D" uid="uid://lf6hmybfhfei" path="res://godot-skeleton-main/art/Tiles/DarkTiles.PNG" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cyaixuhbte267" path="res://godot-skeleton-main/art/Background/Background.PNG" id="1_272bh"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c6ud4p2y2y3pg" path="res://godot-skeleton-main/art/Tiles/MossTiles.PNG" id="3_7mycd"]
 [ext_resource type="Script" uid="uid://b5uw70ov5nyca" path="res://oxygen_ui.gd" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://bri3anwhgvcpy" path="res://camera_2d.gd" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://dbvlh4rvhy06p" path="res://time_label.gd" id="8_4c57u"]
 [ext_resource type="Script" uid="uid://dwbongg6mqfv6" path="res://bubble_spawner.gd" id="8_5vw27"]
+[ext_resource type="Script" uid="uid://cmjkia842oper" path="res://depth_label.gd" id="9_efxa6"]
 [ext_resource type="Script" path="res://StarfishSpawner.gd" id="9_kek77"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_272bh"]
@@ -450,20 +452,37 @@ anchors_preset = 0
 offset_right = 142.0
 offset_bottom = 30.0
 
-[node name="Label" type="Label" parent="OxygenLayer/Control"]
-layout_mode = 0
-offset_top = 23.0
-offset_right = 74.0
-offset_bottom = 53.0
-theme_override_fonts/font = SubResource("FontFile_272bh")
-theme_override_font_sizes/font_size = 22
-text = "Oxygen"
-
 [node name="OxygenBar" type="ProgressBar" parent="OxygenLayer/Control"]
 layout_mode = 0
 offset_top = 2.0
 offset_right = 142.0
 offset_bottom = 29.0
+
+[node name="OxygenLabel" type="Label" parent="OxygenLayer/Control"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = -3.0
+offset_right = 218.0
+offset_bottom = 27.0
+theme_override_fonts/font = SubResource("FontFile_272bh")
+theme_override_font_sizes/font_size = 22
+text = "O2"
+
+[node name="TimeLabel" type="Label" parent="OxygenLayer"]
+offset_top = 32.0
+offset_right = 52.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 22
+text = "Time"
+script = ExtResource("8_4c57u")
+
+[node name="DepthLabel" type="Label" parent="OxygenLayer"]
+offset_top = 64.0
+offset_right = 65.0
+offset_bottom = 95.0
+theme_override_font_sizes/font_size = 22
+text = "Depth"
+script = ExtResource("9_efxa6")
 
 [node name="BubbleSpawner" type="Node2D" parent="."]
 script = ExtResource("8_5vw27")
