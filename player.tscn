@@ -41,14 +41,14 @@ position = Vector2(99, 16)
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_hqtel")
 animation = &"dive"
-frame_progress = 0.5785772
+frame_progress = 0.9974097
 
 [node name="DiveLight" type="PointLight2D" parent="."]
 color = Color(1, 0.8352941, 0.16078432, 1)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.63529414)
 texture = ExtResource("4_hqtel")
-offset = Vector2(0, 80)
+offset = Vector2(30, 70)
 texture_scale = 1.5
 
 [node name="PlayerArea" type="Area2D" parent="." groups=["player"]]

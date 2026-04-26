@@ -60,6 +60,7 @@ func _on_oxygen_depleted() -> void:
 	current_dive_speed = 0
 	# Add your game over logic here (e.g., respawn, scene reload)
 	# get_tree().reload_current_scene()
+	get_tree().paused = true
 	get_tree().get_root().add_child(load("res://death_screen.tscn").instantiate())
 
 func restore_oxygen(amount: float) -> void:
