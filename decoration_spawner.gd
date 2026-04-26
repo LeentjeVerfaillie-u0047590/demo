@@ -19,9 +19,9 @@ extends Node2D
 @export var crab_texture: Texture2D = load("res://godot-skeleton-main/art/decorations/crab.PNG")
 
 @export var spawn_interval: float = 1.2
-@export var spawn_distance_below: float = 900.0
+@export var spawn_distance_below: float = 250.0
 @export var spawn_spread_x: float = 500.0
-@export var spawn_spread_y: float = 250.0
+@export var spawn_spread_y: float = 50.0
 
 @export var fish_chance: float = 0.8
 @export var crab_chance: float = 0.2
@@ -45,9 +45,7 @@ func _process(delta: float) -> void:
 func _spawn_one() -> void:
 	var r := randf()
 
-	if r < coral_chance:
-		_spawn_coral()
-	elif r < coral_chance + fish_chance:
+	if r < fish_chance:
 		_spawn_fish()
 	else:
 		_spawn_crab()

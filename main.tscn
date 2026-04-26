@@ -454,7 +454,6 @@ tile_set = SubResource("TileSet_efxa6")
 
 [node name="DepthGradient" type="CanvasLayer" parent="."]
 layer = 10
-visible = false
 script = ExtResource("7_ycdy4")
 
 [node name="ColorRect" type="ColorRect" parent="DepthGradient"]
@@ -548,15 +547,6 @@ offset_bottom = 269.0
 
 [node name="DecorationSpawner" type="Node2D" parent="."]
 script = ExtResource("17_yaehf")
-spawn_interval = null
-spawn_distance_below = null
-spawn_spread_x = null
-spawn_spread_y = null
-coral_chance = null
-fish_chance = null
-crab_chance = null
-min_scale = null
-max_scale = null
 
 [node name="Purple" type="TextureRect" parent="."]
 offset_left = 186.0

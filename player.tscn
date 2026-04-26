@@ -48,7 +48,7 @@ color = Color(1, 0.8352941, 0.16078432, 1)
 shadow_enabled = true
 shadow_color = Color(0, 0, 0, 0.63529414)
 texture = ExtResource("4_hqtel")
-offset = Vector2(30, 70)
+offset = Vector2(5, 70)
 texture_scale = 1.5
 
 [node name="PlayerArea" type="Area2D" parent="." groups=["player"]]
