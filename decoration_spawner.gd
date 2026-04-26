@@ -3,22 +3,9 @@ extends Node2D
 @onready var player = $"../Player"
 @onready var tilemap: TileMapLayer = $"../TileMapLayer"
 
-@export var coral_scene: PackedScene = load("res://coral.tscn")
 @export var fish_scene: PackedScene = load("res://fish.tscn")
 @export var crab_scene: PackedScene = load("res://crab.tscn")
 
-@export var coral_textures: Array[Texture2D] = [
-	load("res://godot-skeleton-main/art/decorations/coralBlue.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralBlue2.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralBlue3.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralGreen2.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralGreen3.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralPink.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralPurple.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralRed.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralRed2.PNG"),
-	load("res://godot-skeleton-main/art/decorations/coralRed3.PNG"),
-]
 @export var fish_left_textures: Array[Texture2D] = [
 	load("res://godot-skeleton-main/art/decorations/fishRedL.PNG"),
 	load("res://godot-skeleton-main/art/decorations/fishGreenL.PNG"),
@@ -36,9 +23,8 @@ extends Node2D
 @export var spawn_spread_x: float = 500.0
 @export var spawn_spread_y: float = 250.0
 
-@export var coral_chance: float = 0.5
-@export var fish_chance: float = 0.4
-@export var crab_chance: float = 0.1
+@export var fish_chance: float = 0.8
+@export var crab_chance: float = 0.2
 
 @export var min_scale: float = 0.1
 @export var max_scale: float = 0.5
@@ -74,43 +60,6 @@ func _random_spawn_position() -> Vector2:
 func _tile_at_global(pos: Vector2) -> bool:
 	var tile_coords := tilemap.local_to_map(tilemap.to_local(pos))
 	return tilemap.get_cell_source_id(tile_coords) != -1
-
-func _spawn_coral() -> void:
-	if coral_scene == null or coral_textures.is_empty():
-		return
-
-	# Find a position that is "on top of tiles":
-	# We pick a random point, then search downward a bit until we hit a tile,
-	# then place coral slightly above that tile.
-	var tries := 20
-	while tries > 0:
-		tries -= 1
-
-		var base := _random_spawn_position()
-
-		# scan down in steps to find a tile (tweak step and scan depth if needed)
-		var found_tile_pos := Vector2.ZERO
-		var found := false
-		for i in range(0, 12):
-			var p := base + Vector2(0, i * 32)
-			if _tile_at_global(p):
-				found_tile_pos = p
-				found = true
-				break
-		if not found:
-			continue
-
-		var coral := coral_scene.instantiate()
-		add_child(coral)
-
-		var spr := coral.get_node_or_null("Sprite2D") as Sprite2D
-		if spr:
-			spr.texture = coral_textures.pick_random()
-
-		coral.global_position = found_tile_pos + Vector2(0, -20) # lift onto tile
-		var s := randf_range(min_scale, max_scale)
-		coral.scale = Vector2(s, s)
-		return
 
 func _spawn_fish() -> void:
 	if fish_scene == null:

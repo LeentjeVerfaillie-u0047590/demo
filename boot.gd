@@ -4,7 +4,7 @@ extends Node
 @export var loading_screen_scene: PackedScene = preload("res://loadingScreen.tscn")
 @export var loading_texture_path: String = "res://art/loading/Loading.PNG" # adjust case!
 
-@export var min_loading_time_sec: float = 2.5  # <-- artificial slowdown
+@export var min_loading_time_sec: float = 1.5  # <-- artificial slowdown
 
 var _loading_screen: CanvasLayer
 var _start_time_ms: int

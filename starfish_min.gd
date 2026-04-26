@@ -19,14 +19,12 @@ func _process(delta: float) -> void:
 		
 		if speed_adapted != true && player.current_dive_speed > 0:
 			player_speed_to_restore_at_timeout = player.current_dive_speed
-			print("decreasing speed")
 			player.current_dive_speed /= 2.0
 			speed_adapted = true
 			
 		time_increased_speed += delta
 		
 		if time_increased_speed > 7:
-			print("resetting speed to ", player_speed_to_restore_at_timeout)
 			player.current_dive_speed = player_speed_to_restore_at_timeout
 			playerArea = null
 			player = null

@@ -5,5 +5,5 @@ func _ready() -> void:
 
 func _on_restart_pressed() -> void:
 	print("restart pressed")
-	queue_free()  # Remove the death screen
+	queue_free()  # Remove the win screen
 	get_tree().reload_current_scene()
