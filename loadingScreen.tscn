@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c25go31dkk3gc"]
+
+[ext_resource type="Script" uid="uid://bnlxgovpa0lg8" path="res://loading_screen.gd" id="1_n777n"]
+[ext_resource type="Texture2D" uid="uid://bb6y2tuq3qtmr" path="res://godot-skeleton-main/art/loading/Loading.PNG" id="2_nuiy0"]
+
+[node name="Loading Screen" type="CanvasLayer"]
+script = ExtResource("1_n777n")
+
+[node name="Root" type="Node2D" parent="."]
+
+[node name="Background" type="TextureRect" parent="Root"]
+offset_right = 1152.0
+offset_bottom = 655.0
+texture = ExtResource("2_nuiy0")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="LoadingBar" type="ProgressBar" parent="Root"]
+offset_left = 350.0
+offset_top = 324.0
+offset_right = 781.0
+offset_bottom = 384.0
+theme_override_font_sizes/font_size = 22
