@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bpdkbpma61qbo"]
 
 [ext_resource type="Script" uid="uid://by8gj3nhrl1tf" path="res://oxygen_bubble.gd" id="1_7q1qm"]
-[ext_resource type="Texture2D" uid="uid://bx873e6278qy" path="res://godot-skeleton-main/art/loot/Bubble.PNG" id="2_orth8"]
+[ext_resource type="Texture2D" uid="uid://gkvunn8h2bai" path="res://godot-skeleton-main/art/loot/Bubble3.0.PNG" id="2_orth8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_orth8"]
 
@@ -9,8 +9,6 @@
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_7q1qm")
-oxygen_restore_amount = null
-restore_speed = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_orth8")

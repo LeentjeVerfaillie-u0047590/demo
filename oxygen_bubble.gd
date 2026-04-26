@@ -8,10 +8,12 @@ var playerArea: Area2D
 var player: CharacterBody2D
 var is_player_inside: bool = false
 var player_dive_speed_to_restore_at_exit: float
+var initial_scale: Vector2
 
 func _ready() -> void:
-	var connection1 = area_entered.connect(_on_area_entered)
-	var connection2 = area_exited.connect(_on_area_exited)
+	initial_scale = scale
+	area_entered.connect(_on_area_entered)
+	area_exited.connect(_on_area_exited)
 	
 
 func _process(delta: float) -> void:
@@ -23,6 +25,11 @@ func _process(delta: float) -> void:
 
 		# Restore oxygen while player is in bubble
 		player.current_oxygen = min(oxygen_restore_amount, player.current_oxygen + restore_speed * delta)
+		
+		# Animate bubble scale based on oxygen restoration progress
+		var restore_progress = player.current_oxygen / oxygen_restore_amount
+		var target_scale = lerp(min_scale, max_scale, restore_progress)
+		scale = initial_scale * target_scale
 				
 		# Bubble disappears when oxygen reaches target
 		if player.current_oxygen >= oxygen_restore_amount:	
