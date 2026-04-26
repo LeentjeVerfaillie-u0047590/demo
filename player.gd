@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var animated_sprite = $Diver  # Add this line
+
 # Diving parameters
 @export var max_speed: float = 1000.0
 @export var acceleration: float = 2000.0
@@ -19,7 +21,12 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if current_dive_speed == 0:
+		animated_sprite.stop()  # Stop animation when breathing
 		return
+		
+		# Play diving animation
+	if not animated_sprite.is_playing():
+		animated_sprite.play("dive")
 	# Get input direction
 	var input_direction = Vector2.ZERO
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
@@ -50,8 +57,10 @@ func _physics_process(delta: float) -> void:
 
 func _on_oxygen_depleted() -> void:
 	print("Player ran out of oxygen!")
+	current_dive_speed = 0
 	# Add your game over logic here (e.g., respawn, scene reload)
-	get_tree().reload_current_scene()
+	# get_tree().reload_current_scene()
+	get_tree().get_root().add_child(load("res://death_screen.tscn").instantiate())
 
 func restore_oxygen(amount: float) -> void:
 	current_oxygen = min(max_oxygen, current_oxygen + amount)

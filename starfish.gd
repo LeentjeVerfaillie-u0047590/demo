@@ -17,7 +17,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if player_touched:
 		
-		if speed_adapted != true:
+		if speed_adapted != true && player.current_dive_speed > 0:
 			player_speed_to_restore_at_timeout = player.current_dive_speed
 			print("increasing speed")
 			player.current_dive_speed *= 2.0
