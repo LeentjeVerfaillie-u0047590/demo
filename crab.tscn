@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4icbdn0qx71m"]
+
+[ext_resource type="Script" uid="uid://fyai001e07kv" path="res://crab.gd" id="1_grx3d"]
+
+[node name="crab" type="Node2D"]
+script = ExtResource("1_grx3d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

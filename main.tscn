@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://6n3mcis2r7bg"]
+[gd_scene load_steps=25 format=4 uid="uid://6n3mcis2r7bg"]
 
 [ext_resource type="Texture2D" uid="uid://lf6hmybfhfei" path="res://godot-skeleton-main/art/Tiles/DarkTiles.PNG" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cyaixuhbte267" path="res://godot-skeleton-main/art/Background/Background.PNG" id="1_272bh"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://dyndf0ka56gkt" path="res://starfish_min_spawner.gd" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://dx8fp53cntmg1" path="res://treasure.gd" id="14_2cqfq"]
 [ext_resource type="Script" uid="uid://o88eko6vktwi" path="res://minimap.gd" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://7v4thhm6qu3y" path="res://decoration_spawner.gd" id="17_yaehf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_272bh"]
 
@@ -536,3 +537,6 @@ offset_left = 985.0
 offset_top = -1.0
 offset_right = 1154.0
 offset_bottom = 269.0
+
+[node name="DecorationSpawner" type="Node2D" parent="."]
+script = ExtResource("17_yaehf")
