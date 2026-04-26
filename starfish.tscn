@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://d0k315udyaeon"]
+
+[ext_resource type="Texture2D" uid="uid://cnlu72e01n2rf" path="res://godot-skeleton-main/art/loot/Starfish.png" id="1_g6mug"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqavx"]
+radius = 16.0
+
+[node name="Starfish" type="Area2D" unique_id=414593208]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1898793031]
+shape = SubResource("CircleShape2D_hqavx")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D" unique_id=1484137692]
+texture = ExtResource("1_g6mug")
