@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmia6ydp4a8m8"]
+
+[ext_resource type="Script" uid="uid://dbifpmk32v08i" path="res://starfish_min.gd" id="1_lhpw4"]
+[ext_resource type="Texture2D" uid="uid://cnsh02o11webw" path="res://godot-skeleton-main/art/loot/StarfishMin.png" id="2_3urjc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0wck7"]
+
+[node name="starfishMin" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_lhpw4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_0wck7")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("2_3urjc")

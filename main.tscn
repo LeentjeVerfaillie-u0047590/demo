@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://6n3mcis2r7bg"]
+[gd_scene load_steps=23 format=4 uid="uid://6n3mcis2r7bg"]
 
 [ext_resource type="Texture2D" uid="uid://lf6hmybfhfei" path="res://godot-skeleton-main/art/Tiles/DarkTiles.PNG" id="1_1bvp3"]
 [ext_resource type="Texture2D" uid="uid://cyaixuhbte267" path="res://godot-skeleton-main/art/Background/Background.PNG" id="1_272bh"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cmjkia842oper" path="res://depth_label.gd" id="9_efxa6"]
 [ext_resource type="Script" uid="uid://byb04al1xe4k3" path="res://StarfishSpawner.gd" id="9_kek77"]
 [ext_resource type="Texture2D" uid="uid://g853okv1hwjj" path="res://godot-skeleton-main/art/loot/Treasure.png" id="12_dg77c"]
+[ext_resource type="Script" uid="uid://dyndf0ka56gkt" path="res://starfish_min_spawner.gd" id="13_vivmo"]
 [ext_resource type="Script" uid="uid://o88eko6vktwi" path="res://minimap.gd" id="14_w48qg"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_272bh"]
@@ -507,6 +508,9 @@ script = ExtResource("8_5vw27")
 [node name="StarfishSpawner" type="Node2D" parent="."]
 script = ExtResource("9_kek77")
 
+[node name="StarfishMinSpawner" type="Node2D" parent="."]
+script = ExtResource("13_vivmo")
+
 [node name="Treasure" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Treasure"]
@@ -519,14 +523,12 @@ texture = ExtResource("12_dg77c")
 
 [node name="Minimap" type="CanvasLayer" parent="."]
 script = ExtResource("14_w48qg")
-minimap_size = null
-minimap_position = Vector2(900, 0)
-look_ahead_distance = null
-half_width_world = null
-tile_draw_size = null
+minimap_position = Vector2(1000, 0)
 
 [node name="MinimapControl" type="Control" parent="Minimap"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 985.0
+offset_top = -1.0
+offset_right = 1154.0
+offset_bottom = 269.0

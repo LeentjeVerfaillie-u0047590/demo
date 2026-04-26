@@ -2,7 +2,7 @@ extends Node
 
 @onready var player = $"../Player"
 @onready var tilemap = $"../TileMapLayer" 
-@export var starfish_scene: PackedScene = preload("res://starfish.tscn")  # Assign your starfish scene here
+@export var starfish_scene: PackedScene = preload("res://starfish_min.tscn")  # Assign your starfish scene here
 @export var spawn_distance_below: float = 325.0  # How far below player to spawn
 @export var spawn_distance_horizontal: float = 234.0  # Random horizontal offset
 @export var spawn_interval: float = 3.0  # Seconds between spawns

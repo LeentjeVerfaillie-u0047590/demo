@@ -4,11 +4,11 @@ extends CanvasLayer
 @onready var tilemap: TileMapLayer = $"../TileMapLayer"
 
 @export var minimap_size: Vector2 = Vector2(180, 300)
-@export var minimap_position: Vector2 = Vector2(20, 20)
+@export var minimap_position: Vector2 = Vector2(820, 20)
 
 @export var look_ahead_distance: float = 500.0
 @export var half_width_world: float = 400.0 # world units shown left/right of player
-@export var tile_draw_size: Vector2 = Vector2(16, 16) # pixels on minimap
+@export var tile_draw_size: Vector2 = Vector2(20, 20) # pixels on minimap
 
 var minimap_control: Control
 
