@@ -18,6 +18,8 @@ func _ready() -> void:
 	current_dive_speed = max_dive_speed/4.0
 
 func _physics_process(delta: float) -> void:
+	if current_dive_speed == 0:
+		return
 	# Get input direction
 	var input_direction = Vector2.ZERO
 	input_direction.x = Input.get_axis("ui_left", "ui_right")
